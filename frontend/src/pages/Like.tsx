@@ -3,7 +3,7 @@ import { FaHeart } from "react-icons/fa";
 const Like = () => {
 	return (
 		<div className='relative overflow-x-auto shadow-md rounded-lg px-4'>
-			<table className='w-full text-sm text-left rtl:text-right bg-glass overflow-hidden'>
+			<table className='w-full text-sm text-left rtl:text-right bg-glass bg-opacity-10  overflow-hidden'>
 				<thead className='text-xs uppercase bg-glass'>
 					<tr>
 						<th scope='col' className='p-4'>
