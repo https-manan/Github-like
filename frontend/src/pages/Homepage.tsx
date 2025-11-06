@@ -13,15 +13,16 @@ const [loading, setLoading] = useState(false);
 const [sortRepo, setSortRepo] = useState('forked');
 
 
-const getUserProfileAndRepo = useCallback(async ()=>{
+const getUserProfileAndRepo = useCallback(async (username='https-manan')=>{
 	setLoading(true);
 	try {
-		const res = await axios.get(`https://api.github.com/users/https-manan`);
+		const res = await axios.get(`https://api.github.com/users/${username}`);
 		const userProfile = res.data;
 		setUserProfile(userProfile);
 		const repores = await axios.get(userProfile?.repos_url);
 		const repos = repores.data;
 		setRepos(repos);
+		return { userProfile, repos };
 	} catch (error) {
 		console.log(error);
 	} finally {
@@ -33,14 +34,22 @@ useEffect(() => {
 	getUserProfileAndRepo();
 }, []);
 
+const onSearch = async (e, username) => {
+    e.preventDefault();
+    setRepos([]);
+    setUserProfile('');
+    
+    await getUserProfileAndRepo(username);
+}
+
 return (
 	<div className='m-4'>
-		<Search />
+		<Search onSearch={onSearch}/>
 		<SortRepos />
 		<div className='flex gap-4 flex-col lg:flex-row justify-center items-start'>
 			<ProfileInfo userProfile={userProfile}/>
-			<Repos />
-			<Spinner />
+			<Repos repos={repos} />
+			{loading && <Spinner />}
 		</div>
 	</div>
 );
