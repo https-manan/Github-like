@@ -8,6 +8,23 @@ A simple project that allows users to like repositories, copy code snippets, and
 * Copy code snippets with one click
 * Responsive and clean UI
 
+## Installation
+
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/https-manan/Github-like
+   ```
+2. Install dependencies:
+
+   ```bash
+   npm install
+   ```
+3. Start the development server:
+
+   ```bash
+   npm run dev
+   ```
 
 ## Usage
 
@@ -15,8 +32,3 @@ A simple project that allows users to like repositories, copy code snippets, and
 * Browse repositories
 * Like or unlike them
 * Copy code directly from the UI
-
-## Contributing
-
-Contributions are welcome!
-Fork the repo and open a pull request with your improvements.
